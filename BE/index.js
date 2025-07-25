@@ -3,11 +3,12 @@ const express = require("express");
 const { connectDB } = require("./config/db");
 const fs = require("fs");
 const path = require("path");
+const cors = require("cors");
 const globalErrorHandlerMw = require("./middlewares/globalErrorHandler.mw.js");
 const app = express();
 const port = process.env.port || 3000;
 app.use(express.json());
-
+app.use(cors());
 // DB Connection
 connectDB();
 
