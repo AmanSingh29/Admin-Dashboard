@@ -39,8 +39,6 @@ JWT_SECRET=
 JWT_EXPIRES_IN=
 ```
 
-> 🔒 Do not share the actual values of these keys. Keep them private.
-
 4. Start the backend server:
 
 ```bash
@@ -104,13 +102,6 @@ The frontend will run at: `http://localhost:3000`
 - **Icons:** Lucide React
 
 ---
-
-## 📝 Submission Instructions
-
-- Make sure the `.env` file is present in `be` with correct values.
-- Push your code to a **public GitHub repository**.
-- Include this README in the root of the repo.
-- Reply to the assignment email with your GitHub repo link.
 
 ---
 
