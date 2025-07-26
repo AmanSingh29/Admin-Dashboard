@@ -66,7 +66,7 @@ npm install
 3. Configure API endpoint in `utils/fetch.ut.ts`:
 
 ```ts
-const BASE_URL = "http://localhost:5000"; // or your deployed backend URL
+const BASE_URL = "http://localhost:5000"; // if don't work then enter the forwarded public port from the BE or your deployed backend URL
 ```
 
 4. Start the frontend development server:
@@ -100,8 +100,6 @@ The frontend will run at: `http://localhost:3000`
 - **Database:** MongoDB (Atlas)
 - **Authentication:** JWT
 - **Icons:** Lucide React
-
----
 
 ---
 
