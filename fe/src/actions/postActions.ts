@@ -14,7 +14,7 @@ export async function fetchPostsAction() {
 
 export async function createPostAction(post: any) {
   const { title, content } = post || {};
-  if (!title || !content) {
+  if (!title?.trim() || !content?.trim()) {
     return { success: false, message: "All fields are required." };
   }
   try {
@@ -42,7 +42,6 @@ export async function deletePostAction(post_id: string) {
 
 export async function updatePostAction(post_id: string, payload: any) {
   try {
-    console.log("payload---------", payload, post_id);
     const res = await fetchData(
       `${POSTS_PATH}/${post_id}`,
       "PATCH",

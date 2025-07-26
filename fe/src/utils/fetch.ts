@@ -1,6 +1,6 @@
 "use server";
 
-import { getSession } from "./auth";
+import { getSession, logout } from "./auth";
 
 const API_HOST = "https://admin-dashboard-4kfg.onrender.com";
 
@@ -36,6 +36,9 @@ export async function fetchData(
     const res = await fetch(`${API_HOST}${url}`, config);
     if (!res.ok) {
       const err = await res.json();
+      if(err.statusCode === 401){
+        logout();
+      }
       throw err;
     }
     return await res.json();

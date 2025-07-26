@@ -7,9 +7,15 @@ import { fetchData } from "@/utils/fetch";
 export async function handleSignup(formData: FormData) {
   const name = formData.get("name");
   const email = formData.get("email");
-  const password = formData.get("password");
+  const password = formData.get("password") as string;
   if (!name || !email || !password) {
     return { success: false, message: "All fields are required." };
+  }
+  if (password?.length < 6) {
+    return {
+      success: false,
+      message: "Password must be atleast 6 characters long",
+    };
   }
   try {
     const res = await fetchData(SIGNUP, "POST", 0, {

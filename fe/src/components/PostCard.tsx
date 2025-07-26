@@ -50,12 +50,14 @@ export default function PostCard({ post, currentUser }: Props) {
       <h3 className="text-lg font-semibold text-gray-800">{post.title}</h3>
       <p className="text-sm text-gray-600">{post.content}</p>
 
-      <div className="mt-2 flex justify-between items-center text-sm">
-        <span className="text-gray-400">
-          by {post.user_id.name} on{" "}
-          {new Date(post.created_at).toLocaleDateString()}
-        </span>
-      </div>
+      {post.user_id && (
+        <div className="mt-2 flex justify-between items-center text-sm">
+          <span className="text-gray-400">
+            by {post.user_id.name} on{" "}
+            {new Date(post.created_at).toLocaleDateString()}
+          </span>
+        </div>
+      )}
 
       {isEditor && (
         <div className="flex gap-2 mt-3">
