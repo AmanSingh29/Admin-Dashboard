@@ -2,7 +2,7 @@
 
 import { getSession } from "./auth";
 
-const API_HOST = "https://mpdnt7r5-5000.inc1.devtunnels.ms";
+const API_HOST = "https://admin-dashboard-4kfg.onrender.com";
 
 export async function fetchData(
   url: string,
