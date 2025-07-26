@@ -37,8 +37,6 @@ fs.readdirSync("./routes").forEach((file) => {
   }
 });
 
-app.use(require("celebrate").errors());
-
 app.use(globalErrorHandlerMw);
 
 app.listen(port, () => {
