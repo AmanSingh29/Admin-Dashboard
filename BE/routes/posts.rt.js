@@ -34,7 +34,7 @@ router
 
 router
   .route("/:post_id")
-  .put(
+  .patch(
     authorizeRoles(USER_ROLES.EDITOR),
     updateDeletePostVaidator,
     asyncHandler(updatePost),

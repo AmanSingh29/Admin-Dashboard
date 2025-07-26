@@ -10,13 +10,12 @@ export function getNavItemsByRole(
     case "admin":
       return [
         { label: "Users", href: "/users" },
-        { label: "Posts", href: "/posts" },
         { label: "Logs", href: "/logs" },
       ];
 
     case "editor":
     case "viewer":
-      return [{ label: "Posts", href: "/dashboard/editor/posts" }];
+      return [{ label: "Posts", href: "/posts" }];
 
     default:
       return [];

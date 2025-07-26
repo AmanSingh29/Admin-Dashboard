@@ -29,7 +29,12 @@ async function getAllPosts(req, res, next) {
 
 async function updatePost(req, res, next) {
   const { post_id } = req.params;
-  const post = await Post.findByIdAndUpdate(post_id, req.body, { new: true });
+  const { title, content } = req.body;
+  const post = await Post.findByIdAndUpdate(
+    post_id,
+    { $set: { title, content } },
+    { new: true }
+  );
   if (!post) throw new AppError("Post not Found!", 404);
   logActivity({
     user_id: req.user?._id,
