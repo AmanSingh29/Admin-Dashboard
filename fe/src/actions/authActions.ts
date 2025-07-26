@@ -23,7 +23,7 @@ export async function handleSignup(formData: FormData) {
   } catch (err: any) {
     return {
       success: false,
-      message: err.message,
+      message: err.message || "Something went wrong!",
     };
   }
 }
@@ -45,7 +45,7 @@ export async function handleLogin(formData: FormData) {
   } catch (err: any) {
     return {
       success: false,
-      message: err.message,
+      message: err.message || "Something went wrong!",
     };
   }
 }

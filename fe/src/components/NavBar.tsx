@@ -1,42 +1,37 @@
 "use client";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { Menu, UserCircle, X } from "lucide-react";
 import { logout } from "@/utils/auth";
+import { getNavItemsByRole } from "@/utils/commonFunctions";
 
 type NavBarProps = {
   userData?: {
     name: string;
     email: string;
+    role: string;
   };
 };
-
-const navItems = [
-  { label: "Posts", href: "/dashboard/editor/posts" },
-  { label: "Users", href: "/dashboard/admin/users" },
-  { label: "Logs", href: "/dashboard/admin/logs" },
-];
 
 export default function NavBar({ userData }: NavBarProps) {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
-
+  const navItems = getNavItemsByRole(userData?.role);
   const isActive = (href: string) => pathname.startsWith(href);
 
   return (
     <header className="bg-white shadow sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-        <Link href="/">
+        <a href="/">
           <span className="text-2xl font-bold text-blue-600">
             AdminDashboard
           </span>
-        </Link>
+        </a>
 
         {/* Desktop Nav */}
         <nav className="hidden md:flex gap-6 items-center">
           {navItems.map(({ label, href }) => (
-            <Link
+            <a
               key={href}
               href={href}
               className={`text-sm font-medium transition-colors hover:text-blue-600 ${
@@ -44,7 +39,7 @@ export default function NavBar({ userData }: NavBarProps) {
               }`}
             >
               {label}
-            </Link>
+            </a>
           ))}
           {/* Mock auth */}
           <div className="ml-4 flex items-center gap-2">
@@ -64,12 +59,12 @@ export default function NavBar({ userData }: NavBarProps) {
                 </button>
               </div>
             ) : (
-              <Link
+              <a
                 href="/auth"
                 className="text-sm font-semibold text-gray-700 hover:text-blue-600"
               >
                 Login/Signup
-              </Link>
+              </a>
             )}
           </div>
         </nav>
@@ -88,7 +83,7 @@ export default function NavBar({ userData }: NavBarProps) {
         <div className="md:hidden px-4 pb-4">
           <div className="flex flex-col gap-4">
             {navItems.map(({ label, href }) => (
-              <Link
+              <a
                 key={href}
                 href={href}
                 className={`text-sm font-medium transition-colors hover:text-blue-600 ${
@@ -97,7 +92,7 @@ export default function NavBar({ userData }: NavBarProps) {
                 onClick={() => setIsOpen(false)}
               >
                 {label}
-              </Link>
+              </a>
             ))}
             <div className="pt-2 border-t">
               {userData ? (
@@ -116,12 +111,12 @@ export default function NavBar({ userData }: NavBarProps) {
                   </button>
                 </div>
               ) : (
-                <Link
+                <a
                   href="/auth"
                   className="text-sm font-semibold text-gray-700 hover:text-blue-600"
                 >
                   Login/Signup
-                </Link>
+                </a>
               )}
             </div>
           </div>

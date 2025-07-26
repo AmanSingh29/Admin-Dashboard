@@ -6,7 +6,7 @@ const API_HOST = "https://mpdnt7r5-5000.inc1.devtunnels.ms";
 
 export async function fetchData(
   url: string,
-  method: "GET" | "POST" | "PUT" | "DELETE" = "GET",
+  method: "GET" | "POST" | "PATCH" | "DELETE" = "GET",
   ttlInHrs = 1,
   body: any = null,
   headers: Record<string, string> = {},

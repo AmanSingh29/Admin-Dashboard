@@ -2,11 +2,13 @@
 
 import { useCallback, useRef, useState } from "react";
 import { handleLogin, handleSignup } from "@/actions/authActions";
+import { useToast } from "@/contexts/ToastContext";
 
 export default function AuthForm() {
   const [isLogin, setIsLogin] = useState<boolean>(true);
   const [loading, setLoading] = useState<boolean>(false);
   const formRef = useRef<HTMLFormElement>(null);
+  const { showToast } = useToast();
 
   const handleSubmit = useCallback(
     async (e: React.FormEvent<HTMLFormElement>) => {
@@ -20,8 +22,11 @@ export default function AuthForm() {
         response = await handleSignup(formData);
       }
       setLoading(false);
-      if(response.success){
+      if (response.success) {
+        showToast(response.message, "success");
         window.location.href = "/";
+      } else {
+        showToast(response.message, "error");
       }
     },
     [isLogin]
@@ -76,8 +81,8 @@ export default function AuthForm() {
         <button
           type="submit"
           className={`w-full ${
-            loading ? "bg-blue-400" : "bg-blue-600"
-          } text-white py-2 rounded hover:bg-blue-700`}
+            loading ? "bg-gray-400" : "bg-blue-600"
+          } text-white py-2 rounded hover:cursor-pointer`}
           disabled={loading}
         >
           {loading ? "Loading..." : isLogin ? "Login" : "Signup"}
