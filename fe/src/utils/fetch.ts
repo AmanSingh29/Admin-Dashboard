@@ -2,7 +2,10 @@
 
 import { getSession, logout } from "./auth";
 
+// Deployed endpoint on render
 const API_HOST = "https://admin-dashboard-4kfg.onrender.com";
+// Local forwarded post url use after forwarding the port as public from be local
+// const API_HOST = "https://mpdnt7r5-5000.inc1.devtunnels.ms/";
 
 export async function fetchData(
   url: string,
