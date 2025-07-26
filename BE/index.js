@@ -6,7 +6,7 @@ const path = require("path");
 const cors = require("cors");
 const globalErrorHandlerMw = require("./middlewares/globalErrorHandler.mw.js");
 const app = express();
-const port = process.env.port || 3000;
+const port = process.env.port || 5000;
 app.use(express.json());
 app.use(cors());
 // DB Connection
