@@ -6,6 +6,10 @@ A full-stack admin dashboard built using the MERN stack with role-based authenti
 
 https://admin-dashboard-five-tau-80.vercel.app
 
+Admin Creds:
+email: amansingh979429@gmail.com
+password: 123456
+
 ## 📁 Project Structure
 
 This project has two main folders:
